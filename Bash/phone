@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Write a script named phone that prints out any lines that match the parameter, eg:
+# phone alan would print: alan smith 8313-4484 or if we typed:
+# phone 4484 it would again display: alan smith 8313-4484
+
+file="${2:-text.txt}"
+
+if [ ! -f "$file" ]
+then 
+	echo "Error: No file named $file" >&2
+	exit 1
+fi
+
+for name in "$@"
+do
+	grep -i "$name" text.txt
+done
